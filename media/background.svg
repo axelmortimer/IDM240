@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/css" href="../master.css"?>
+<svg id="main-page-background" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" preserveAspectRatio="none">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #045468;
+      }
+    </style>
+  </defs>
+  <polyline points="0 0 300 0 0 300"/>
+  <polygon class="cls-1" points="0 300 300 0 300 300 0 300"/>
+</svg>
