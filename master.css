@@ -35,13 +35,23 @@ a {
 	pointer-events: auto;
 }
 
+.progress-bar {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 0%;
+	height: 7.5px;
+	background-color: gray;
+	transition: width 4s ease-in;
+}
+
 .open-screen-content {
 	height: 90%;
 	display: flex;
 	flex-flow: column nowrap;
 	justify-content: center;
 	align-items: center;
-	cursor: pointer;
+	user-select: none;
 }
 
 .open-screen-content h1 {
@@ -81,6 +91,36 @@ a {
 	height: 60%;
 	width: 80%;
 }
+
+
+/* ----- AUDIO CONTROLS ----- */
+
+.audio-controls {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	opacity: 0;
+	pointer-events: none;
+	z-index: 1;
+	transition: opacity 1s ease-in-out;
+	cursor: pointer;
+}
+
+#play-button {
+	width: 75px;
+	height: 75px;
+	display: none;
+}
+
+#play-button .st0 {fill:#FFFFFF;}
+
+#pause-button {
+	width: 75px;
+	height: 75px;
+	display: inline;
+}
+
+#pause-button .st0 {fill:#FFFFFF;}
 
 
 /* ----- MAIN PAGE ----- */
