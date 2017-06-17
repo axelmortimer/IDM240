@@ -21,6 +21,13 @@ a {
 	text-decoration: none;
 }
 
+.disable-select {
+	-webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; 
+}
 
 /* ----- OPENING SCREEN ----- */
 
@@ -72,7 +79,7 @@ a {
 #recordplayer .st2 { fill:none; stroke:#FFFFFF; stroke-miterlimit:10; }
 
 #recordplayer #needle {
-	transform-origin: 70% 10%;
+	transform-origin: 250px 85px;
 	transition: all 0.5s ease-in-out;
 	transform: rotate(0deg);
 }
@@ -82,7 +89,7 @@ a {
 }
 
 #recordplayer #vinyl {
-	transform-origin: 50% 50%;
+	transform-origin: 122.5px 152.5px;
 	transition: none 3s ease-in-out;
 }
 
@@ -145,6 +152,7 @@ a {
 	overflow-y: hidden;
 	pointer-events: none;
 	z-index: 2;
+	margin-top: 0;
 }
 
 #main-page-background-container {
@@ -237,9 +245,10 @@ a {
 }
 
 #down-arrow {
-	position: absolute;
-	width: 20px;
-	height: 20px;
+	position: fixed;
+	max-width: 1.5%;
+	max-height: 1.5%;
+	left: 49.25%;
 	bottom: 2%;
 	transition: opacity 2s ease-in-out;
 	animation-name: none;
@@ -282,7 +291,8 @@ a {
 	flex-flow: column nowrap;
 	justify-content: center;
 	align-items: center;
-	overflow: hidden;
+	overflow-x: hidden;
+	overflow-y: hidden;
 	z-index: 100;
 }
 
