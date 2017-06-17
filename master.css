@@ -7,6 +7,10 @@
 	font-size: 16px;
 }
 
+body {
+	overflow-y: hidden;
+}
+
 h1, h2, h3 {
 	font-family: font86261;
 	font-style: italic;
@@ -31,8 +35,9 @@ a {
 	background-color: white;
 	opacity: 1;
 	overflow: hidden;
-	transition: opacity 1s ease-in-out;
+	transition: opacity 3s ease-in-out;
 	pointer-events: auto;
+	z-index: 5;
 }
 
 .progress-bar {
@@ -59,12 +64,12 @@ a {
 	width: 60%;
 	font-size: 2.25rem;
 	text-align: center;
-	line-height: 5rem;
+	line-height: 3.5rem;
 }
 
-#recordplayer .st0 {fill:#FFFFFF;}
-#recordplayer .st1 {fill:none;stroke:#FFFFFF;stroke-width:6;stroke-miterlimit:10;}
-#recordplayer .st2 {fill:none;stroke:#FFFFFF;stroke-miterlimit:10;}
+#recordplayer .st0 { fill:#FFFFFF; }
+#recordplayer .st1 { fill:none; stroke:#FFFFFF; stroke-width:6; stroke-miterlimit:10; }
+#recordplayer .st2 { fill:none; stroke:#FFFFFF; stroke-miterlimit:10; }
 
 #recordplayer #needle {
 	transform-origin: 70% 10%;
@@ -101,7 +106,7 @@ a {
 	right: 0;
 	opacity: 0;
 	pointer-events: none;
-	z-index: 1;
+	z-index: 5;
 	transition: opacity 1s ease-in-out;
 	cursor: pointer;
 }
@@ -112,7 +117,7 @@ a {
 	display: none;
 }
 
-#play-button .st0 {fill:#FFFFFF;}
+#play-button .st0 { fill:#FFFFFF; }
 
 #pause-button {
 	width: 75px;
@@ -120,7 +125,7 @@ a {
 	display: inline;
 }
 
-#pause-button .st0 {fill:#FFFFFF;}
+#pause-button .st0 { fill:#FFFFFF; }
 
 
 /* ----- MAIN PAGE ----- */
@@ -132,16 +137,56 @@ a {
 	width: 100vw;
 	height: 100vh;
 	padding: 4rem;
-	background: url(media/background.svg);
-	background-size: cover;
 	display: flex;
 	flex-flow: column nowrap;
 	justify-content: center;
 	align-items: center;
-	z-index: -1;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	pointer-events: none;
+	z-index: 2;
 }
 
-.main-page h1 {
+#main-page-background-container {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	z-index: 1;
+	pointer-events: none;
+}
+
+#main-page-background {
+	width: 100%;
+	height: 100%;
+}
+
+#main-page-background .cls-1 { fill: #045468; }
+
+#left-side, #right-side {
+	transition: transform 1.5s ease;
+}
+
+#left-side {
+	transform: translateX(-100vw);
+}
+
+#right-side {
+	transform: translateX(100vw);
+}
+
+#main-page-title, #main-page-subtitle, #discoball, #down-arrow {
+	z-index: 2;
+	opacity: 0;
+	transition: opacity 2s ease-in-out;
+}
+
+#main-page-title, #main-page-subtitle {
+	transition-delay: 3.5s;
+}
+
+#main-page-title {
 	padding: 0.5rem;
 	margin-top: -1rem;
 	font-size: 2rem;
@@ -151,7 +196,7 @@ a {
 	color: white;
 }
 
-.main-page h2 {
+#main-page-subtitle {
 	padding: 0.5rem;
 	margin-bottom: -1rem;
 	font-size: 1.6rem;
@@ -159,6 +204,15 @@ a {
 	text-align: center;
 	color: white;
 }
+
+#discoball {
+	transition-delay: 1.5s;
+}
+
+#discoball * { fill:#ffffff;stroke:#ffffff; }
+#discoball .st0 { fill:none;stroke:#ffffff; stroke-width:10; stroke-miterlimit:10; }
+#discoball .st1 { fill:none;stroke:#ffffff; stroke-width:8; stroke-miterlimit:10; }
+#discoball .st2 { fill:none;stroke:#ffffff; stroke-width:6; stroke-miterlimit:10; }
 
 #discoball #light {
 	transform-origin: 50% 40%;
@@ -182,39 +236,67 @@ a {
 	}
 }
 
+#down-arrow {
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	bottom: 2%;
+	transition: opacity 2s ease-in-out;
+	animation-name: none;
+	animation-duration: 2s;
+	animation-iteration-count: infinite;
+	animation-timing-function: ease-in-out;
+	animation-delay: 1s;
+
+}
+
+#down-arrow .cls-1 { fill: #fff; }
+
+@keyframes blink {
+	0% {
+		opacity: 0.8;
+	}
+
+	50% {
+		opacity: 0.2;
+	}
+
+	100% {
+		opacity: 0.8;
+	}
+}
+
 
 /* ----- ABOUT PAGE ----- */
 
 .about-page {
+	position: relative;
 	background-color: #DEDEDE;
 	height: 100vh;
 	width: 100vw;
 	padding: 3rem;
+	background-image: url("media/msg.jpg");
+	background-size: cover;
 	box-shadow: 0px -5px 22px 0px rgba(0,0,0,0.5);
 	display: none;
 	flex-flow: column nowrap;
 	justify-content: center;
 	align-items: center;
-	z-index: 0;
+	overflow: hidden;
+	z-index: 100;
 }
-
-/*#background-container {
-	opacity: 0.4;
-	width: 100%;
-	height: 100%;
-}*/
 
 .about-page h1 {
 	font-size: 2rem;
 	line-height: 2.75rem;
 	text-align: center;
+	text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.8);
 }
 
 .about-page h3 {
-	font-size: 1.5rem;
+	font-size: 1.25rem;
 	line-height: 2.75rem;
 	text-align: center;
-	color: gray;
 }
 
 .buttons {
@@ -226,6 +308,10 @@ a {
 	color: white;
 	text-align: center;
 	background-color: #4d4d4d;
+}
+
+.tickets-button:hover, .tour-button:hover {
+	background-color: #383838;
 }
 
 .tickets-button {

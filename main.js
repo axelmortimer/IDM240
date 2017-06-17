@@ -10,13 +10,22 @@ if ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navig
 			$(".progress-bar").css("transition", "width 4s ease-in");
 			// Resetting the animation for mobile press-and-hold
 			$("#recordplayer #needle").css("transition", "all 0.5s ease-in-out");
-			$("#recordplayer:hover #needle").css("transform", "rotate(30deg)");
+			$("#recordplayer #needle").css("transform", "rotate(30deg)");
 			$("#recordplayer #vinyl").css("transition", "none 3s ease-in-out");
-			$("#recordplayer:hover #vinyl").css("transition", "transform 9s ease-in-out");
-			$("#recordplayer:hover #vinyl").css("transform", "rotate(1080deg)");
+			$("#recordplayer #vinyl").css("transition", "transform 9s ease-in-out");
+			$("#recordplayer #vinyl").css("transform", "rotate(1080deg)");
 			transition = setTimeout(function() {
 				$(".open-screen").css("opacity", "0");
 				$(".open-screen").css("pointer-events", "none");
+				$(".open-screen").css("z-index", "-10");
+				$("#main-page-title, #main-page-subtitle, #discoball").css("opacity", "1");
+				setTimeout(function() {
+					$("body").css("overflow-y", "visible");
+					$("#down-arrow").css("opacity", "0.8");
+					$("#down-arrow").css("animation-name", "blink");
+				}, 5500);
+				$("#left-side").css("transform", "translateX(0)");
+				$("#right-side").css("transform", "translateX(0)");
 				$(".about-page").css("display", "flex");
 				$(".audio-controls").css("opacity", "1");
 				$(".audio-controls").css("pointer-events", "auto");
@@ -32,10 +41,9 @@ if ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navig
 				$(".progress-bar").css("transition", "width 0s");
 				// Stopping the animation for mobile press-and-hold
 				$("#recordplayer #needle").css("transition", "none");
-				$("#recordplayer:hover #needle").css("transform", "rotate(0deg)");
+				$("#recordplayer #needle").css("transform", "rotate(0deg)");
 				$("#recordplayer #vinyl").css("transition", "none");
-				$("#recordplayer:hover #vinyl").css("transition", "none");
-				$("#recordplayer:hover #vinyl").css("transform", "rotate(0deg)");
+				$("#recordplayer #vinyl").css("transform", "rotate(0deg)");
 				clearTimeout(transition);
 			}
 		})
@@ -66,6 +74,15 @@ else {
 			transition = setTimeout(function() {
 				$(".open-screen").css("opacity", "0");
 				$(".open-screen").css("pointer-events", "none");
+				$(".open-screen").css("z-index", "-10");
+				$("#main-page-title, #main-page-subtitle, #discoball").css("opacity", "1");
+				setTimeout(function() {
+					$("body").css("overflow-y", "visible");
+					$("#down-arrow").css("opacity", "0.8");
+					$("#down-arrow").css("animation-name", "blink");
+				}, 5500);
+				$("#left-side").css("transform", "translateX(0)");
+				$("#right-side").css("transform", "translateX(0)");
 				$(".about-page").css("display", "flex");
 				$(".audio-controls").css("opacity", "1");
 				$(".audio-controls").css("pointer-events", "auto");
